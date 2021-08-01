@@ -1,0 +1,33 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Blocks{% endblock %}
+
+{% block content %}
+    {% if blocks %}
+        {% for block in blocks  %}
+            <div class="action">
+                <div class="info">
+                    <p>
+                        Block {{ block.block_number }} at 
+                        <span class="date">{{ block.created }} </span>
+                        <br />
+                        <p>
+                        signers:
+                            {% for signer in block.signers  %}
+                                {{ signer.email }}
+                            {% empty %}
+                                <p>no one signe yet.</p>
+                            {% endfor %}
+                        </p>
+                        block data : {{ block.data }}
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

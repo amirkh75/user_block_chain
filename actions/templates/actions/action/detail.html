@@ -1,0 +1,24 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Actions{% endblock %}
+
+{% block content %}
+    {% if action %}
+        {% for act in action  %}
+            <div class="action">
+                <div class="info">
+                    <p>
+                        <span class="date">{{ act.created|timesince }} ago</span>
+                        <br />
+                        <a href="#">
+                            {{ act.user.email }}
+                        </a>
+                        action was {{ act.verb }}
+                        <br />
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
